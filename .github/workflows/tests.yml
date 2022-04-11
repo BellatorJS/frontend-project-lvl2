@@ -4,7 +4,7 @@ on:
   
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
  
     steps:
       - uses: actions/checkout@v2
@@ -14,7 +14,7 @@ jobs:
           node-version: '16.x'
       - name: npm install
         run: 
-          npm install
+          make install
       - name: Run jest
         run: 
           make test
@@ -24,4 +24,4 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: make test-coverage
-          debug: true
+          
