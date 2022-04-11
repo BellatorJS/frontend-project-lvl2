@@ -1,5 +1,5 @@
 # Name of workflow
-name: Testing_CI
+name: jest-test
 
 # Trigger the workflow on push or pull request
 on:
@@ -37,7 +37,7 @@ jobs:
       -   uses: paambaati/codeclimate-action@v3
       #   # Add Code Climate secret key
           env:
-      #     CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
          with:
            coverageCommand: make test-coverage
            debug: true
