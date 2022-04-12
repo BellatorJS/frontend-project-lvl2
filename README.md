@@ -3,6 +3,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a0936b3fc770739f134b/maintainability)](https://codeclimate.com/github/BellatorJS/frontend-project-lvl2/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a0936b3fc770739f134b/test_coverage)](https://codeclimate.com/github/BellatorJS/frontend-project-lvl2/test_coverage)
+
 
 
 
