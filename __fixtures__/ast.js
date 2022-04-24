@@ -91,31 +91,31 @@ const stringify = (node, depth = 1) => {
   }
 
   const string = Object.entries(node).map(
-    ([key, value]) => `${getIntend(depth)}${key}: ${stringify(value, depth + 1)}`,
+    ([key, value]) => `${getIntend(depth+1)}${key}: ${stringify(value, depth + 1)}`,
   );
 
-  return ['{', ...string, '}'].join("");
+  return ['{', ...string, '}'].join('');
 };
 
 const stylish = (diffTree) => {
   const iter = (tree, depth) => tree.map((node) => {
-   // console.log(`!!!!!!!!!!${node.key} ${node.type}`);
+    // console.log(`!!!!!!!!!!${node.key} ${node.type}`);
     switch (node.type) {
       case 'added':
         return `${getIntend(depth)}+ ${node.key}: ${stringify(node.value, depth + 1)} \n`;
       case 'nested':
-        return `${getIntend(depth+1)}${node.key}: \n${iter(node.children, depth + 1)} \n`;
+        return `${getIntend(depth + 1)}${node.key}: \n${iter(node.children, depth + 1)} \n`;
       case 'deleted':
         return `${getIntend(depth)}- ${node.key}: ${stringify(node.value, depth + 1)} \n`;
       case 'changed':
-        return `${getIntend(depth)} ${node.key}: ${stringify(node.valueBefore, depth + 1)}\n${getIntend(depth+1)}+ ${node.key}: ${stringify(node.valueAfter, depth+1)}\n`;
-      case 'unchanged':
-        return `${getIntend(depth)} ${node.key}: ${node.value}\n`;
+        return `${getIntend(depth)} ${node.key}: ${stringify(node.valueBefore, depth + 1)}\n${getIntend(depth + 1)}+ ${node.key}: ${stringify(node.valueAfter, depth + 1)}\n`;
+      case 'nested':
+        return `${getIntend(depth)} ${node.key}: ${stringify(node.children, depth + 1).join('')}\n`;
       default:
         throw new Error(`This type does not exist: ${node.type}\n`);
     }
   });
-  return `{\n${iter(diffTree, 1).join("")}}`;
+  return `{\n${iter(diffTree, 1).join('')}}`;
 };
 const TREE = astTree(data11, data22);
 console.log(stylish(TREE));
