@@ -2,7 +2,7 @@
 [![Actions Status](https://github.com/BellatorJS/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/BellatorJS/frontend-project-lvl2/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a0936b3fc770739f134b/maintainability)](https://codeclimate.com/github/BellatorJS/frontend-project-lvl2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a0936b3fc770739f134b/test_coverage)](https://codeclimate.com/github/BellatorJS/frontend-project-lvl2/test_coverage)
-[![Node CI](https://github.com/BellatorJS/frontend-project-lvl2/actions/workflows/Node_CI.yml/badge.svg)](https://github.com/BellatorJS/frontend-project-lvl2/actions/workflows/Node_CI.yml)
+[![Node CI](https://github.com/BellatorJS/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)](https://github.com/BellatorJS/frontend-project-lvl2/actions/workflows/nodejs.yml)
 
 <h2>:performing_arts: Gen difference is an application that helps you find the difference. </h2>
 	<p>This project is a console application that allows you to merge two files for changes. Supported file types are Json and Yaml. The format of the result of the changes is displayed on the screen and is available in the Json, Plain Text and Classic Cascading formats.</p>
