@@ -1,23 +1,20 @@
-/* eslint-disable no-param-reassign */
-import { getFilePath, parses, fileExtname } from '../parsers/readFile.js';
-import stylish from './formatters/stylish.js';
+import { readFileSync } from 'fs';
+import path from 'path';
+import parse from './parse.js';
+import format from './formatters/index.js';
 import getAstTree from './getAstTree.js';
 
-const extension = ['.yml', '.yaml', '.json'];
+const readFile = (filename) => readFileSync(path.resolve(process.cwd(), filename), 'utf-8');
+const fileFormat = (filename) => path.extname(filename).slice(1);
 
-const genDiff = (object1, object2) => {
-  const Data1 = getFilePath(object1);
-  const Ext1 = fileExtname(Data1);
-  const Data2 = getFilePath(object2);
-  const Ext2 = fileExtname(Data2);
-  if (!extension.includes(Ext1) || !extension.includes(Ext2)) {
-    return console.log('file extension is incorrect');
-  }
-  const fileData1 = parses(Data1, Ext1);
-  const fileData2 = parses(Data2, Ext2);
-
-  const tree = getAstTree(fileData1, fileData2);
-  const result = stylish(tree);
-  return result;
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
+  const file1format = fileFormat(filepath1);
+  const file2format = fileFormat(filepath2);
+  const fileContent1 = readFile(filepath1);
+  const fileContent2 = readFile(filepath2);
+  const data1 = parse(file1format, fileContent1);
+  const data2 = parse(file2format, fileContent2);
+  const astTree = getAstTree(data1, data2);
+  return format(astTree, formatName);
 };
 export default genDiff;

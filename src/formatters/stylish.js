@@ -1,4 +1,4 @@
-const indent = (depth, spaceCount = 4) => ' '.repeat(spaceCount * depth - 2);
+const setIntend = (depth, spaceCount = 4) => ' '.repeat(spaceCount * depth - 2);
 const stringify = (data, treeDepth) => {
   if (typeof data !== 'object') {
     return `${data}`;
@@ -8,28 +8,30 @@ const stringify = (data, treeDepth) => {
   }
   const lines = Object
     .entries(data)
-    .map(([key, value]) => `${indent(treeDepth + 1)}  ${key}: ${stringify(value, treeDepth + 1)}`);
-  return ['{', ...lines, `${indent(treeDepth)}  }`].join('\n');
+    .map(([key, value]) => `${setIntend(treeDepth + 1)}  ${key}: ${stringify(value, treeDepth + 1)}`);
+  return ['{', ...lines, `${setIntend(treeDepth)}  }`].join('\n');
 };
-const stylish = (diffTree) => {
-  const buildString = (tree, depth) => tree.map((node) => {
-    const getValue = (value, sign) => `${indent(depth)}${sign} ${node.key}: ${stringify(value, depth)}\n`;
+
+const stylish = (astTree) => {
+  const iter = (tree, depth) => tree.map((node) => {
+    const BuildString = (value, symbol) => `${setIntend(depth)}${symbol} ${node.key}: ${stringify(value, depth)}\n`;
     switch (node.type) {
       case 'added':
-        return getValue(node.val, '+');
+        return `${BuildString(node.value, '+')}`;
       case 'deleted':
-        return getValue(node.val, '-');
-      case 'unchanged':
-        return getValue(node.val, ' ');
+        return `${BuildString(node.value, '-')}`;
       case 'changed':
-        return `${getValue(node.valueBefore, '-')}${getValue(node.valueAfter, '+')}`;
+        return `${BuildString(node.valueBefore, '-')}${BuildString(node.valueAfter, '+')}`;
+      case 'unchanged':
+        return `${BuildString(node.value, ' ')}`;
       case 'nested':
-        return `${indent(depth)}  ${node.key}: {\n${buildString(node.children, depth + 1).join('')}${indent(depth)}  }\n`;
+        return ` ${setIntend(depth)} ${node.key}: {\n${iter(node.children, depth + 1).join('')}${setIntend(depth)}  }\n`;
       default:
-        throw new Error(`This type does not exist: ${node.type}`);
+        throw new Error(`Pardon, this type does not exist: ${node.type}\n`);
     }
   });
-  return `{\n${buildString(diffTree, 1).join('')}}`;
+
+  return `{\n${iter(astTree, 1).join('')}}`;
 };
 
 export default stylish;
