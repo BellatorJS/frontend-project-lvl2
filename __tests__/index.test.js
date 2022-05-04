@@ -1,4 +1,3 @@
-
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { readFileSync } from 'fs';
@@ -20,7 +19,7 @@ describe('Testing gendiff with different format files', () => {
   test.each(extensions)('Compare files and output formats', (extension) => {
     const fileBefore = getFixturePath(`file1.${extension}`);
     const fileAfter = getFixturePath(`file2.${extension}`);
-    //expect(genDiff(fileBefore, fileAfter)).toEqual(stylishResult);
+    expect(genDiff(fileBefore, fileAfter)).toEqual(stylishResult);
     expect(genDiff(fileBefore, fileAfter, 'plain')).toEqual(plainResult);
     expect(genDiff(fileBefore, fileAfter, 'json')).toEqual(jsonResult);
   });
