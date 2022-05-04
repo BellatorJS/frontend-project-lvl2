@@ -23,14 +23,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
           node-version: ${{ matrix.node-version }}
-    - name: npm install
-        # Install project
-      run: |
-        make install
-    - name: Run linter
-        # Run Linter
-      run: |
-        make lint
+          cache: 'npm'
+    - run: make install
+    - run: make lint
+    - run: make test
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
