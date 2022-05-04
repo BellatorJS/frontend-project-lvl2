@@ -1,14 +1,13 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/BellatorJS/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/BellatorJS/frontend-project-lvl2/actions)
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/a0936b3fc770739f134b/maintainability)](https://codeclimate.com/github/BellatorJS/frontend-project-lvl2/maintainability)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a0936b3fc770739f134b/test_coverage)](https://codeclimate.com/github/BellatorJS/frontend-project-lvl2/test_coverage)
+[![Node CI](https://github.com/BellatorJS/frontend-project-lvl2/actions/workflows/Node_CI.yml/badge.svg)](https://github.com/BellatorJS/frontend-project-lvl2/actions/workflows/Node_CI.yml)
 
 <h2>:performing_arts: Gen difference is an application that helps you find the difference. </h2>
 	<p>This project is a console application that allows you to merge two files for changes. Supported file types are Json and Yaml. The format of the result of the changes is displayed on the screen and is available in the Json, Plain Text and Classic Cascading formats.</p>
-
-
+	
+	
 <h2>:package: Installation Guide </h2>
 		<ul>
 		  <li> 
@@ -18,11 +17,6 @@
 		  <li> <p>Check of launch </p>
 		  	</li>
 		  	<pre>$npx gendiff</pre>
-		</ul>
-		<p align="center">
-		<a href="https://asciinema.org/a/Xgyp3J0wsRWQOc4m6YhD3udoG" target="_blank"><img src="https://asciinema.org/a/Xgyp3J0wsRWQOc4m6YhD3udoG.svg" width="80%"/></a>
-		</p>
-	
 <h2> :rocket: Launch and demo of gendiff</h2>
 <h4> Demonstration of the results of comparing two files of a nested structure in accessible formats.	</h4>
 	<p>file1.json</p>
