@@ -1,12 +1,9 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "type": "module",
   "description": "[![Actions Status](https://github.com/BellatorJS/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/BellatorJS/frontend-project-lvl2/actions)",
   "main": "src/main.js",
-  "bin": {
-    "gendiff": "bin/gendiff.js"
-  },
+
   "scripts": {
     "test": "npx jest --bail"
   },
@@ -20,6 +17,10 @@
     "url": "https://github.com/BellatorJS/frontend-project-lvl2/issues"
   },
   "homepage": "https://github.com/BellatorJS/frontend-project-lvl2#readme",
+  "type": "module",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "dependencies": {
     "commander": "^9.0.0",
     "jest-cli": "^28.0.3",
