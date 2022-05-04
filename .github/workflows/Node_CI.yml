@@ -4,6 +4,9 @@ on:
   - push
   - pull_request
 
+env:
+  CI: true
+  
 jobs:
   build:
 
@@ -11,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x]
         
 
     steps:
@@ -24,8 +27,6 @@ jobs:
         # Install project
       run: |
         make install
-      env:
-        CI: true
     - name: Run linter
         # Run Linter
       run: |
