@@ -16,7 +16,7 @@
 		  	<pre>$git clone https://github.com/BellatorJS/frontend-project-lvl2</br>$make install</pre>
 		  <li> <p>Check of launch </p>
 		  	</li>
-		  	<pre>$npx gendiff</pre>
+		  	<pre>$gendiff -h</pre>
 <h2> :rocket: Launch and demo of gendiff</h2>
 <h4> Demonstration of the results of comparing two files of a nested structure in accessible formats.	</h4>
 	<p>file1.json</p>
