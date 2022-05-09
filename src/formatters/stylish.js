@@ -28,7 +28,7 @@ const stylish = (astTree) => {
       case 'nested':
         return ` ${setIntend(depth)} ${node.key}: {\n${iter(node.children, depth + 1).join('')}${setIntend(depth)}  }\n`;
       default:
-        throw new Error(`Sorry, this type does not support: ${node.type}\n`);
+        throw new Error('Sorry something went wrong. Try again.');
     }
   });
 
