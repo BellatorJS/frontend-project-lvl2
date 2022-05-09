@@ -11,6 +11,6 @@ export default (astTree, format) => {
     case 'json':
       return json(astTree);
     default:
-      throw new Error('Sorry, this format is not supported');
+      throw new Error(`Sorry, this format ${format} does not support`);
   }
 };

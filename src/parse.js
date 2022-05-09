@@ -9,6 +9,6 @@ export default (format, data) => {
     case 'json':
       return JSON.parse(data);
     default:
-      throw new Error('Sorry, this type does not support');
+      throw new Error(`Sorry, this  format .${format} does not support`);
   }
 };

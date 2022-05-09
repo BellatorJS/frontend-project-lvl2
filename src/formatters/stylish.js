@@ -1,4 +1,5 @@
 const setIntend = (depth, spaceCount = 4) => ' '.repeat(spaceCount * depth - 2);
+
 const stringify = (data, treeDepth) => {
   if (typeof data !== 'object') {
     return `${data}`;
@@ -14,20 +15,20 @@ const stringify = (data, treeDepth) => {
 
 const stylish = (astTree) => {
   const iter = (tree, depth) => tree.map((node) => {
-    const BuildString = (value, symbol) => `${setIntend(depth)}${symbol} ${node.key}: ${stringify(value, depth)}\n`;
+    const buildString = (value, symbol) => `${setIntend(depth)}${symbol} ${node.key}: ${stringify(value, depth)}\n`;
     switch (node.type) {
       case 'added':
-        return `${BuildString(node.value, '+')}`;
+        return `${buildString(node.value, '+')}`;
       case 'deleted':
-        return `${BuildString(node.value, '-')}`;
+        return `${buildString(node.value, '-')}`;
       case 'changed':
-        return `${BuildString(node.valueBefore, '-')}${BuildString(node.valueAfter, '+')}`;
+        return `${buildString(node.valueBefore, '-')}${buildString(node.valueAfter, '+')}`;
       case 'unchanged':
-        return `${BuildString(node.value, ' ')}`;
+        return `${buildString(node.value, ' ')}`;
       case 'nested':
         return ` ${setIntend(depth)} ${node.key}: {\n${iter(node.children, depth + 1).join('')}${setIntend(depth)}  }\n`;
       default:
-        throw new Error(`Pardon, this type does not exist: ${node.type}\n`);
+        throw new Error(`Sorry, this type does not support: ${node.type}\n`);
     }
   });
 
