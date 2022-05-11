@@ -22,5 +22,6 @@ describe('Testing gendiff with different format files', () => {
     expect(genDiff(fileBefore, fileAfter)).toEqual(stylishResult);
     expect(genDiff(fileBefore, fileAfter, 'plain')).toEqual(plainResult);
     expect(genDiff(fileBefore, fileAfter, 'json')).toEqual(jsonResult);
+    expect(genDiff(fileBefore, fileAfter, 'stylish')).toEqual(stylishResult);
   });
 });
